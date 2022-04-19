@@ -43,7 +43,6 @@
 }
 
 .subheader {
-    color: #fff;
     font-size: 30px;
     margin-bottom: 60px;
 }
@@ -88,4 +87,7 @@
     .container {
         margin: 0 8px;
     }
+}
+.image {
+    background-image: url(../../assets/logo.png);
 }
