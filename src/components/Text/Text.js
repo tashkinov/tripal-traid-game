@@ -15,9 +15,11 @@ const Text = ({
             className: cn(
                 style.root,
                 className,
-                {[style.strong]: strong},
-                {[style.italic]: italic},
-                {[style.disabled]: disabled},
+                {
+                    [style.strong]: strong,
+                    [style.italic]: italic,
+                    [style.disabled]: disabled
+                },
             )}, children);
 };
 
