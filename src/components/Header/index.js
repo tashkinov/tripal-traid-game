@@ -1,11 +1,11 @@
-import style from './Header.module.css';
+import style from './Header.module.scss';
 import Container from "../Container";
 import logoPng from '../../assets/logo.png';
 
 const MENU = ['Menu 1', 'Menu 2', 'Menu 3', 'Menu 4'];
-const menuList = MENU.map(item => {
+const menuList = MENU.map((item, index) => {
     return (
-        <li><a href="#">{item}</a></li>
+        <li key={index}><a href="#">{item}</a></li>
     )
 })
 const Header = () => {

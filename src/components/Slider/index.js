@@ -1,23 +1,19 @@
+import {useState} from "react";
 import Heading from "../Heading";
 import Container from "../Container";
-import logoPng from '../../assets/logo.png';
-import style from './Slider.module.css';
+import style from './Slider.module.scss';
 
 const Slider = () => {
     return (
         <section className={style.section}>
             <div className={style.slider}>
                 <Container className={style.sliderContent}>
-                    <Heading level={1} black>
-                        Heading Level 1
+                    <Heading level={1}>
+                        Triple Triad Game
                     </Heading>
                     <Heading level={2}>
-                        Heading Level 2
+                        Wow WoW WoW
                     </Heading>
-                    <div className={style.image}>
-                        <img src={logoPng} alt="Logo"/>
-                    </div>
-                    <div className={style.image} />
                     <div className={style.call}>
                         <button className={style.button}>Wow</button>
                     </div>
