@@ -7,16 +7,20 @@ import style from './CharacterCard.module.scss';
 import { ReactComponent as Heart } from './assets/heart.svg';
 
 const CharacterCard = ({
-    id,
-    name,
-    src,
-    humanName,
-    description,
-    isLike,
-    onLikeClick,
-   }) => {
+                           id,
+                           name,
+                           src,
+                           humanName,
+                           description,
+                           isLike,
+                           onLikeClick,
+                           onReadBioClick,
+                       }) => {
     const handleClick = () => {
         onLikeClick(id);
+    }
+    const readBioClick = () => {
+        onReadBioClick(id);
     }
     return (
         <div className={style.root}>
@@ -39,11 +43,11 @@ const CharacterCard = ({
                     <div
                         onClick={handleClick}
                         className={cn(style.like, {
-                        [style.active]: isLike
-                    })}>
+                            [style.active]: isLike
+                        })}>
                         <Heart />
                     </div>
-                    <div className={style.readBio}>
+                    <div onClick={readBioClick}>
                         <a href="#">Read bio</a>
                     </div>
                 </div>
@@ -65,6 +69,7 @@ CharacterCard.propTypes = {
     description: PropTypes.string,
     isLike: PropTypes.bool,
     onLikeClick: PropTypes.func,
+    onReadBioClick: PropTypes.func,
 }
 
 export default CharacterCard;
