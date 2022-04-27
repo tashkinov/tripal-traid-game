@@ -1,8 +1,22 @@
 .root {
     margin: 0 0 0.5em 0;
     padding: 0;
-    color: #000000d9;
+    color: #fff;
     font-weight: 600;
+
+    &.backLine {
+        text-align: center;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 30%;
+            max-width: 100px;
+            position: relative;
+            border-bottom: 1px solid #aaa;
+            margin: 15px auto 0;
+        }
+    }
 }
 .colorBlack {
     color: #000;
