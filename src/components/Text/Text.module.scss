@@ -1,13 +1,21 @@
 .root {
-    background: #f7f7f7;
+     &.strong {
+        font-weight: bold;
+    }
+    &.italic {
+        font-style: italic;
+    }
+    &.disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+    &.centered {
+        text-align: center;
+    }
 }
-.strong {
-    font-weight: bold;
+h1, h2, h3, h4, h5 {
+    margin-bottom: 15px;
 }
-.italic {
-    font-style: italic;
-}
-.disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+p, img {
+    margin-bottom: 10px;
 }

@@ -1,7 +1,8 @@
-import {useState} from "react";
 import Heading from "../Heading";
 import Container from "../Container";
+import Button from "../Button";
 import style from './Slider.module.scss';
+import Clock from "../Clock";
 
 const Slider = () => {
     return (
@@ -12,10 +13,12 @@ const Slider = () => {
                         Triple Triad Game
                     </Heading>
                     <Heading level={2}>
-                        Wow WoW WoW
+                        <Clock />
                     </Heading>
                     <div className={style.call}>
-                        <button className={style.button}>Wow</button>
+                       <Button white>
+                           WoW
+                       </Button>
                     </div>
                 </Container>
             </div>
