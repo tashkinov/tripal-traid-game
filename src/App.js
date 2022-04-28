@@ -6,11 +6,10 @@ import Container from './components/Container';
 import Heading from './components/Heading';
 import CharacterCard from './components/CharacterCard';
 import Footer from './components/Footer';
-import {CHARACTER, BIO} from './constants/CharactersData';
+import {CHARACTER} from './constants/CharactersData';
 import Biography from './pages/Biography';
 
 import style from './App.module.scss'
-import './App.module.scss';
 
 function App() {
     const [character, setCharacter] = useState(CHARACTER);
@@ -25,17 +24,9 @@ function App() {
                 return item;
             }));
         }
-    const [isShow, setShow] =  useState(true)
-    const [bio, setBiography] = useState(<Biography />)
 
     const [characterId, setCharacterId] = useState(null);
-
-    const setBioClick = () => {
-        setShow(prevState => !prevState);
-        setBiography(null)
-    }
-
-
+    
     const handleReadBioClick = (id) => {
         setCharacterId(id);
     }
