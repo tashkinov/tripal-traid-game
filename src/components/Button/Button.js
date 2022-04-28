@@ -1,12 +1,19 @@
 import style from './Button.module.scss';
 import cn from 'classnames';
 
-const Button = ({children, black, white, onClickButton}) => {
-    const onClickFn = () => {
-        onClickButton();
+const Button = ({
+    children,
+    black,
+    white,
+    onClick
+}) => {
+    const handleClick = () => {
+        onClick && onClick();
     }
     return (
-        <button onClick={onClickFn} className={cn(
+        <button
+            onClick={handleClick}
+            className={cn(
             style.root,
             {
                 [style.black]: black,
