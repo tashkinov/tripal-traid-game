@@ -26,7 +26,7 @@ function App() {
         }
 
     const [characterId, setCharacterId] = useState(null);
-    
+
     const handleReadBioClick = (id) => {
         setCharacterId(id);
     }
