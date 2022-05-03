@@ -47,8 +47,8 @@ const CharacterCard = ({
                         })}>
                         <Heart />
                     </div>
-                    <div >
-                        <a href="#" onClick={handleReadBioClick}>Read bio</a>
+                    <div>
+                        <a href="" onClick={handleReadBioClick}>Read bio</a>
                     </div>
                 </div>
             </div>
