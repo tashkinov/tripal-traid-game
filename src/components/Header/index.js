@@ -3,7 +3,26 @@ import Container from "../Container";
 import logoPng from '../../assets/logo.png';
 import {useEffect, useState} from "react";
 import cn from 'classnames';
-import {Link, useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
+
+const MENU = [
+    {
+        title: 'Main',
+        href: '/',
+    },
+    {
+        title: 'Characters',
+        href: '/characters',
+    },
+    {
+        title: 'About',
+        href: '/about',
+    },
+    {
+        title: 'Contacts',
+        href: '/contacts',
+    },
+];
 
 const Header = () => {
     const navigate = useNavigate();
@@ -37,10 +56,19 @@ const Header = () => {
                         <img src={logoPng} />
                     </div>
                     <ul className={style.nav}>
-                        <li><Link to="/" >Main</Link></li>
-                        <li><Link to="/characters">Characters</Link></li>
-                        <li><Link to="/about">About</Link></li>
-                        <li><Link to="/contacts">Contacts</Link></li>
+                        {
+                            MENU.map((item, index) => (
+                                <li key={index}>
+                                    <NavLink
+                                        to={item.href}
+                                        className={({isActive}) => {
+                                            return isActive ? style.active : null
+                                        }}
+                                    >{item.title}</NavLink>
+                                </li>
+                                )
+                            )
+                        }
                     </ul>
                 </Container>
             </div>

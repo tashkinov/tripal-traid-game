@@ -9,7 +9,6 @@ import {useNavigate} from "react-router-dom";
 
 const Characters = () => {
     const navigate = useNavigate();
-    const [characterId, setCharacterId] = useState(null);
     const [character, setCharacter] = useState(CHARACTER);
 
     const handleLikeClick = (id) => {
@@ -25,7 +24,7 @@ const Characters = () => {
     }
 
     const handleReadBioClick = (id) => {
-        navigate(`/characters${id}`);
+        navigate(`/characters/${id}`);
     }
 
     return (
