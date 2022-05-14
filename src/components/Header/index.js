@@ -3,14 +3,29 @@ import Container from "../Container";
 import logoPng from '../../assets/logo.png';
 import {useEffect, useState} from "react";
 import cn from 'classnames';
+import {NavLink, useNavigate} from "react-router-dom";
 
-const MENU = ['Menu 1', 'Menu 2', 'Menu 3', 'Menu 4'];
-const menuList = MENU.map((item, index) => {
-    return (
-        <li key={index}><a href="#">{item}</a></li>
-    )
-})
+const MENU = [
+    {
+        title: 'Main',
+        href: '/',
+    },
+    {
+        title: 'Characters',
+        href: '/characters',
+    },
+    {
+        title: 'About',
+        href: '/about',
+    },
+    {
+        title: 'Contacts',
+        href: '/contacts',
+    },
+];
+
 const Header = () => {
+    const navigate = useNavigate();
     let isScrollTop;
     const [scrollTop, setScrollTop] = useState(0);
     useEffect(() => {
@@ -22,6 +37,11 @@ const Header = () => {
 
         return () => window.removeEventListener("scroll", onScroll);
     }, [scrollTop]);
+
+    const handleLogoClick = () => {
+        navigate('/');
+    }
+
     return (
         <header className={style.root}>
             <div className={cn(
@@ -32,11 +52,23 @@ const Header = () => {
             )
                 }>
                 <Container className={style.headerWrap}>
-                    <div className={style.logo}>
+                    <div className={style.logo} onClick={handleLogoClick}>
                         <img src={logoPng} />
                     </div>
                     <ul className={style.nav}>
-                        {menuList}
+                        {
+                            MENU.map((item, index) => (
+                                <li key={index}>
+                                    <NavLink
+                                        to={item.href}
+                                        className={({isActive}) => {
+                                            return isActive ? style.active : null
+                                        }}
+                                    >{item.title}</NavLink>
+                                </li>
+                                )
+                            )
+                        }
                     </ul>
                 </Container>
             </div>

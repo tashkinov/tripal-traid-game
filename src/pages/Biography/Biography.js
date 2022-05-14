@@ -2,18 +2,31 @@ import React from "react";
 import {BIO} from '../../constants/CharactersData';
 import Text from '../../components/Text';
 import Container from "../../components/Container";
+import {useParams} from "react-router-dom";
 import Button from "../../components/Button";
-import PropTypes from 'prop-types';
+import {useNavigate, Navigate} from 'react-router-dom';
 
-const Biography = ({id, onBackClick}) => {
-    const handleBackClick = () => {
-        onBackClick && onBackClick();
+const Biography = () => {
+    const {id} = useParams();
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate(-1);
     }
+
+    if(!BIO[id]) {
+        return <Navigate to="/characters" replace />
+    }
+
     return (
         <Container>
-            <Text element={'div'} centered>
-                <Button onClick={handleBackClick}>Back</Button>
-            </Text>
+            <div>
+                <Button
+                    color="black"
+                    onClick={handleClick}
+                >
+                    Go Back
+                </Button>
+            </div>
             <div>
                 {
                     BIO[id].map((item, index) => {
@@ -35,10 +48,6 @@ const Biography = ({id, onBackClick}) => {
             </div>
         </Container>
     )
-}
-
-Biography.propTypes = {
-    id: PropTypes.number,
 }
 
 export default Biography;
