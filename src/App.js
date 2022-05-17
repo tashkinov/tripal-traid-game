@@ -1,79 +1,27 @@
-import React, {useEffect, useState} from "react";
-
-import Header from './components/Header';
-import Slider from './components/Slider';
-import Container from './components/Container';
-import Heading from './components/Heading';
-import CharacterCard from './components/CharacterCard';
-import Footer from './components/Footer';
-import {CHARACTER} from './constants/CharactersData';
+import {Routes, Route} from 'react-router-dom';
+import Main from './pages/Main';
 import Biography from './pages/Biography';
-
-import style from './App.module.scss'
+import Layout from "./components/Layout";
+import Characters from "./pages/Characters/Charactres";
+import About from "./pages/About";
+import Contacts from './pages/Contacts';
+import NotFound from './pages/NotFound';
 
 function App() {
-    const [character, setCharacter] = useState(CHARACTER);
-    const handleLikeClick = (id) => {
-        setCharacter((prevState) => prevState.map(item => {
-                if(id === item.id) {
-                    return {
-                        ...item,
-                        isLike: !item.isLike,
-                    };
-                }
-                return item;
-            }));
-        }
 
-    const [characterId, setCharacterId] = useState(null);
+    return (
+        <Routes>
+            <Route path="/" element={<Layout />}>
+                <Route index element={<Main />} />
+                <Route path="characters" element={<Characters/>} />
+                <Route path="characters/:id" element={<Biography />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contacts" element={<Contacts />} />
+                <Route path="*" element={<NotFound />}></Route>
+            </Route>
 
-    const handleReadBioClick = (id) => {
-        setCharacterId(id);
-    }
-
-  return (
-      <>
-          <Header/>
-          <Slider/>
-          {
-              characterId !== null ?
-                  <Biography onBackClick={() => setCharacterId(null)} id={characterId} /> :
-                  (<section className={style.cardSection}>
-                      <Container id={1}>
-                          <div className={style.cardTitle}>
-                              <Heading backLine black>
-                                  Marvel Cards
-                              </Heading>
-                              <Heading level={2} black>
-                                  Collect your best five
-                              </Heading>
-                          </div>
-                          <div className={style.cardWrap}>
-                              {
-                                  character.map((item, index) =>{
-                                      return (
-                                          <div key={item.id}>
-                                              <CharacterCard
-                                                  id={item.id}
-                                                  name={item.name}
-                                                  src={item.thumbnail.path}
-                                                  description={item.description}
-                                                  humanName={item.humanName}
-                                                  onLikeClick={handleLikeClick}
-                                                  isLike={item.isLike}
-                                                  onReadBio={handleReadBioClick}
-                                              />
-                                          </div>
-                                      )
-                                  })
-                              }
-                          </div>
-                      </Container>
-                  </section>)
-      }
-          <Footer/>
-      </>
-  );
+        </Routes>
+    )
 }
 
 export default App;

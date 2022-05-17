@@ -33,6 +33,7 @@
 }
 .logo img {
     max-width:100%;
+    cursor: pointer;
 }
 
 .nav {
@@ -60,6 +61,10 @@
     padding: 21px;
     color: initial;
     text-decoration: initial;
+}
+
+.nav li a.active {
+    color: red;
 }
 
 .header.small .logo {
