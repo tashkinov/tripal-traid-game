@@ -7,7 +7,7 @@ import {CHARACTER} from "../../constants/CharactersData";
 
 import style from './Main.module.scss';
 import Slider from "../../components/Slider";
-import Characters from "../Characters/Charactres";
+import Characters from "../Characters/Characters";
 
 const Main = () => {
 

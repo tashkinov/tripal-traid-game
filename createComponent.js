@@ -49,7 +49,7 @@ createComponents.then(async (dirPath) => {
     return dirPath;
 
 }).then(async (dirPath) => {
-    await fs.writeFile(`${dirPath}/Index.js`, componentIndexTemplate, (err) => {
+    await fs.writeFile(`${dirPath}/index.js`, componentIndexTemplate, (err) => {
         if(err !== null) {
             Promise.reject(err);
         }
