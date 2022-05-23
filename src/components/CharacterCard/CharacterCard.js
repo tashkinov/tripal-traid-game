@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 import Heading from '../Heading';
 import Text from '../Text';
+import {Link} from "react-router-dom";
+
 
 import style from './CharacterCard.module.scss';
 import { ReactComponent as Heart } from './assets/heart.svg';
@@ -14,14 +16,11 @@ const CharacterCard = ({
                            description,
                            isLike,
                            onLikeClick,
-                           onReadBio,
                        }) => {
     const handleClick = () => {
         onLikeClick && onLikeClick(id);
     }
-    const handleReadBioClick = () => {
-        onReadBio && onReadBio(id);
-    }
+
     return (
         <div className={style.root}>
             <img
@@ -47,8 +46,8 @@ const CharacterCard = ({
                         })}>
                         <Heart />
                     </div>
-                    <div >
-                        <a href="#" onClick={handleReadBioClick}>Read bio</a>
+                    <div>
+                        <Link to={`/characters/${id}`}>Read bio</Link>
                     </div>
                 </div>
             </div>
@@ -69,7 +68,6 @@ CharacterCard.propTypes = {
     description: PropTypes.string,
     isLike: PropTypes.bool,
     onLikeClick: PropTypes.func,
-    onReadBio: PropTypes.func,
 }
 
 export default CharacterCard;
