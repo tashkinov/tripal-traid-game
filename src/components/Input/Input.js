@@ -1,10 +1,15 @@
 import style from './Input.module.scss';
-import Logo from '../../assets/logo.png';
 
-
-const Input = () => {
+const Input = ({
+                   type,
+                   id,
+                   name,
+                   required,
+               }) => {
     return (
-        <></>
+        <input type={type} id={id} name={name} required={required} className={style.root}>
+
+        </input>
     );
 };
 

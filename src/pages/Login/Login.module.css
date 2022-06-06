@@ -318,6 +318,26 @@
   background: #ffffff;
   border-color: #ffffff;
 }
+
+.card.alt .buttonContainer button:disabled {
+  background: #ccc;
+  border-color: #ccc;
+  cursor: default;
+}
+
+.card.alt .buttonContainer button:disabled > span {
+  color: #fff;
+}
+
+.card.alt .buttonContainer button:disabled:hover {
+  background: #ccc;
+  border-color: #ccc;
+}
+
+.card.alt .buttonContainer button:disabled:hover > span {
+  color: #fff;
+}
+
 .card.alt .buttonContainer button span {
   color: #ed2553;
 }

@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import Container from "../../components/Container";
 import Heading from "../../components/Heading";
-
 import CharacterCard from "../../components/CharacterCard";
 import {CHARACTER} from "../../constants/CharactersData";
 import style from "../Main/Main.module.scss";
@@ -9,18 +8,29 @@ import {useNavigate} from "react-router-dom";
 
 const Characters = () => {
     const navigate = useNavigate();
-    const [character, setCharacter] = useState(CHARACTER);
+    const [character, setCharacter] = useState(localStorage.getItem('isLike'));
+
+    function isLikeCheck(itemId) {
+        let isLikeArray = JSON.parse(localStorage.getItem('isLike'));
+        for(let item of isLikeArray){
+            if(itemId === item.id && item.isLike === false){
+                return false
+            }
+            if(itemId === item.id && item.isLike === true){
+                return true
+            }
+        }
+    }
 
     const handleLikeClick = (id) => {
-        setCharacter((prevState) => prevState.map(item => {
-            if(id === item.id) {
-                return {
-                    ...item,
-                    isLike: !item.isLike,
-                };
+        let isLikeArray = JSON.parse(localStorage.getItem('isLike'));
+        for(let item of isLikeArray){
+            if(item.id == id){
+                item.isLike = !item.isLike;
             }
-            return item;
-        }));
+        }
+        localStorage.setItem('isLike', JSON.stringify(isLikeArray));
+        setCharacter(JSON.stringify(isLikeArray));
     }
 
     const handleReadBioClick = (id) => {
@@ -40,7 +50,7 @@ const Characters = () => {
                 </div>
                 <div className={style.cardWrap}>
                     {
-                        character.map((item, index) =>{
+                        CHARACTER.map((item, index) =>{
                             return (
                                 <div key={item.id}>
                                     <CharacterCard
@@ -50,7 +60,7 @@ const Characters = () => {
                                         description={item.description}
                                         humanName={item.humanName}
                                         onLikeClick={handleLikeClick}
-                                        isLike={item.isLike}
+                                        isLike={isLikeCheck(item.id)}
                                         onReadBio={handleReadBioClick}
                                     />
                                 </div>

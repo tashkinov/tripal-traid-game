@@ -3,7 +3,7 @@ import {BIO} from '../../constants/CharactersData';
 import Text from '../../components/Text';
 import Container from "../../components/Container";
 import Button from "../../components/Button";
-import {useNavigate, Navigate, Link, useParams, useLocation} from 'react-router-dom';
+import {useNavigate, Navigate, Link, useParams} from 'react-router-dom';
 import {ReactComponent as AnchorLink} from '../../assets/link_icon.svg';
 import style from './Biography.module.scss';
 

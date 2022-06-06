@@ -3,16 +3,37 @@ import logoPng from "../../assets/logo.png";
 import cn from 'classnames';
 import {ReactComponent as IconPen} from '../../assets/icon-pen.svg';
 import {useState} from "react";
+import Button from "../../components/Button";
+import {func} from "prop-types";
+import Input from "../../components/Input";
+
+let passValue;
+let passRepeat;
 
 const Login = () => {
     const [authForm, setAuthForm] = useState();
     const [registerForm, setRegisterForm] = useState();
+    const [disabledState, setDisabledState] = useState(true);
+
+    function disabledCheck(pass, repeat) {
+        if(pass || repeat) {
+            return pass === repeat;
+        }
+    }
 
     const handleRegisterForm = (event) => {
         setRegisterForm(prevState => ({
             ...prevState,
             [event.target.name]: event.target.value,
         }))
+
+        if (event.target.name == 'password') {
+            passValue = event.target.value;
+        }
+        if (event.target.name == 'repeatPassword') {
+            passRepeat = event.target.value;
+        }
+        setDisabledState(!disabledCheck(passValue, passRepeat));
     }
 
     const handleAuthForm = (event) => {
@@ -25,13 +46,13 @@ const Login = () => {
     const handleFormAuthSubmit = (event) => {
         event.preventDefault();
         console.log({...authForm})
-        event.target.reset();
+        // event.target.reset();
     }
 
     const handleFormRegisterSubmit = (event) => {
         event.preventDefault();
-        console.log({...registerForm})
-        event.target.reset();
+        console.log({...registerForm});
+        // event.target.reset();
     }
 
     const [toggleActive, setToggleActive] = useState(false);
@@ -56,24 +77,24 @@ const Login = () => {
                     </div>
                     <form onSubmit={handleFormAuthSubmit} action="" onChange={handleAuthForm}>
                         <div className={style.inputContainer}>
-                            <input type="email" id="#email" name="email" required="required"/>
+                            <Input type={'email'} id={'#email'} name={'email'} required={'required'}/>
                             <label htmlFor="#email">Email</label>
                             <div className={style.bar}></div>
                         </div>
                         <div className={style.inputContainer}>
-                            <input type="password" id="#password" name="password" required="required"/>
+                            <Input type={'password'} id={'#password'} name={'password'} required={'required'}/>
                             <label htmlFor="#password">Password</label>
                             <div className={style.bar}></div>
                         </div>
                         <div className={style.buttonContainer}>
-                            <button><span>Go</span></button>
+                            <Button><span>Go</span></Button>
                         </div>
                     </form>
                 </div>
                 <div className={cn(style.card, style.alt)}>
                     <div className={cn(style.toggle, {
-                        [style.active]: toggleActive
-                    }
+                            [style.active]: toggleActive
+                        }
                     )} onClick={toggleFunction}>
                         <IconPen/>
                     </div>
@@ -82,22 +103,22 @@ const Login = () => {
                     </h1>
                     <form onSubmit={handleFormRegisterSubmit} onChange={handleRegisterForm}>
                         <div className={style.inputContainer}>
-                            <input type="email" id="#signup-email" name="email" required="required"/>
+                            <Input type={'email'} id={'#signup-email'} name={'email'} required={'required'}/>
                             <label htmlFor="#signup-email">Email</label>
                             <div className={style.bar}></div>
                         </div>
                         <div className={style.inputContainer}>
-                            <input type="password" id="#signup-password" name="password" required="required"/>
+                            <Input type={'password'} id={'#signup-password'} name={'password'} required={'required'}/>
                             <label htmlFor="#signup-password">Password</label>
                             <div className={style.bar}></div>
                         </div>
                         <div className={style.inputContainer}>
-                            <input type="password" id="#signup-repeat-password" name="repeatPassword" required="required"/>
+                            <Input type={'password'} id={'#signup-repeat-password'} name={'repeatPassword'} required={'required'}/>
                             <label htmlFor="#signup-repeat-password">Repeat Password</label>
                             <div className={style.bar}></div>
                         </div>
                         <div className={style.buttonContainer}>
-                            <button><span>Register</span></button>
+                            <Button disabled={disabledState}><span>Register</span></Button>
                         </div>
                     </form>
                 </div>

@@ -5,13 +5,15 @@ const Button = ({
     children,
     black,
     white,
-    onClick
+    onClick,
+    disabled,
 }) => {
     const handleClick = () => {
         onClick && onClick();
     }
     return (
         <button
+            disabled={disabled}
             onClick={handleClick}
             className={cn(
             style.root,
