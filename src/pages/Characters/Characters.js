@@ -1,36 +1,37 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import Container from "../../components/Container";
 import Heading from "../../components/Heading";
 import CharacterCard from "../../components/CharacterCard";
 import {CHARACTER} from "../../constants/CharactersData";
 import style from "../Main/Main.module.scss";
 import {useNavigate} from "react-router-dom";
+import {CharactersState} from "../../components/CharactersContextProvider/CharactersContextProvider";
 
 const Characters = () => {
+    const {chars, setChars} = useContext(CharactersState);
+    const [charsState, setCharsState] = useState(chars);
     const navigate = useNavigate();
-    const [character, setCharacter] = useState(localStorage.getItem('isLike'));
 
     function isLikeCheck(itemId) {
-        let isLikeArray = JSON.parse(localStorage.getItem('isLike'));
-        for(let item of isLikeArray){
-            if(itemId === item.id && item.isLike === false){
+        for(let item in charsState){
+            if(itemId === +item && charsState[item] === false){
                 return false
             }
-            if(itemId === item.id && item.isLike === true){
+            if(itemId === +item && charsState[item] === true){
                 return true
             }
         }
     }
 
     const handleLikeClick = (id) => {
-        let isLikeArray = JSON.parse(localStorage.getItem('isLike'));
-        for(let item of isLikeArray){
-            if(item.id == id){
-                item.isLike = !item.isLike;
+            for(let item in chars) {
+                if(item == id){
+                    chars[item] = !chars[item]
+                }
             }
-        }
-        localStorage.setItem('isLike', JSON.stringify(isLikeArray));
-        setCharacter(JSON.stringify(isLikeArray));
+        setCharsState({...chars});
+        setChars({...chars});
+        localStorage.setItem('isLike', JSON.stringify({...chars}));
     }
 
     const handleReadBioClick = (id) => {

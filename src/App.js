@@ -1,5 +1,4 @@
 import {Routes, Route, useLocation} from 'react-router-dom';
-import React, {useState} from 'react';
 import Main from './pages/Main';
 import Biography from './pages/Biography';
 import Layout from "./components/Layout";
@@ -9,23 +8,9 @@ import Contacts from './pages/Contacts';
 import NotFound from './pages/NotFound';
 import {useEffect} from "react";
 import Login from './pages/Login';
-import {CHARACTER} from "./constants/CharactersData";
-
-export const CharactersState = React.createContext(null);
-
-let initStateCheck;
-if (localStorage.getItem('isLike')) {
-    initStateCheck = JSON.parse(localStorage.getItem('isLike'));
-} else {
-    initStateCheck = [];
-    for (let i = 0; i < CHARACTER.length; i++) {
-        initStateCheck.push({id: CHARACTER[i].id, isLike: false})
-    }
-    localStorage.setItem('isLike', JSON.stringify(initStateCheck));
-}
+import CharactersContextProvider from "./components/CharactersContextProvider";
 
 function App() {
-    const [chars, setChars] = useState(initStateCheck);
     const location = useLocation();
     useEffect(() => {
         if (location.hash) {
@@ -45,7 +30,7 @@ function App() {
     }, [location.hash, location.pathname])
 
     return (
-        <CharactersState.Provider value={{chars, setChars}}>
+        <CharactersContextProvider>
             <Routes>
                 <Route path="/" element={<Layout/>}>
                     <Route index element={<Main/>}/>
@@ -57,7 +42,7 @@ function App() {
                 </Route>
                 <Route path="/login" element={<Login/>}/>
             </Routes>
-        </CharactersState.Provider>
+        </CharactersContextProvider>
     )
 }
 
