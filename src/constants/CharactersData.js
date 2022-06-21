@@ -7,7 +7,6 @@ export const CHARACTER = [
             "path": "https://firebasestorage.googleapis.com/v0/b/it-course-84ddd.appspot.com/o/marvel-game%2Fspider-man.png?alt=media&token=8ff4b083-81ed-449f-823c-c79110735d1b"
         },
         "humanName": "Peter Parker",
-        "isLike": false,
     },
     {
         "id": 1021331,
@@ -17,7 +16,6 @@ export const CHARACTER = [
             "path": "https://firebasestorage.googleapis.com/v0/b/it-course-84ddd.appspot.com/o/marvel-game%2Fdoctor-strange.png?alt=media&token=299d8900-328f-4b0d-9116-aa9e0308a4b6"
         },
         "humanName": "Stephen Strange",
-        "isLike": false,
     },
     {
         "id": 1167381,
@@ -27,7 +25,6 @@ export const CHARACTER = [
             "path": "https://firebasestorage.googleapis.com/v0/b/it-course-84ddd.appspot.com/o/marvel-game%2Fcapitan-america.png?alt=media&token=80c42b19-614d-46fa-9c83-8ab4ff218495"
         },
         "humanName": "Steve Rogers",
-        "isLike": false,
     },
     {
         "id": 1127131,
@@ -37,7 +34,6 @@ export const CHARACTER = [
             "path": "https://firebasestorage.googleapis.com/v0/b/it-course-84ddd.appspot.com/o/marvel-game%2Firon-man.png?alt=media&token=e9a4443f-0dbc-4f49-aef9-7f8e7b261fab"
         },
         "humanName": "Tony Stark",
-        "isLike": false,
     },
     {
         "id": 1113431,
@@ -47,7 +43,6 @@ export const CHARACTER = [
             "path": "https://firebasestorage.googleapis.com/v0/b/it-course-84ddd.appspot.com/o/marvel-game%2Fhulk.png?alt=media&token=5ae03f4c-e513-4b3c-bae2-c82e6d6add8a"
         },
         "humanName": "Bruce Banner",
-        "isLike": false,
     },
     {
         "id": 1010536,
@@ -57,7 +52,6 @@ export const CHARACTER = [
             "path": "https://firebasestorage.googleapis.com/v0/b/it-course-84ddd.appspot.com/o/marvel-game%2Fcapitan-marvel.png?alt=media&token=fb83366e-4902-4541-a732-2efbb55147e5"
         },
         "humanName": "Carol Danvers",
-        "isLike": false,
     }
 ];
 

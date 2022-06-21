@@ -4,28 +4,31 @@ import cn from 'classnames';
 import style from './Text.module.scss';
 
 const Text = ({
-  element,
-  children,
-  className,
-  strong,
-  italic,
-  disabled,
-  centered,
+                  element,
+                  children,
+                  className,
+                  strong,
+                  italic,
+                  disabled,
+                  centered,
+                  id,
               }) => {
-    if(element === 'paragraph') {
+    if (element === 'paragraph') {
         element = 'p';
     }
     return React.createElement(element, {
-            className: cn(
-                style.root,
-                className,
-                {
-                    [style.strong]: strong,
-                    [style.italic]: italic,
-                    [style.disabled]: disabled,
-                    [style.centered]: centered,
-                },
-            )}, children);
+        id,
+        className: cn(
+            style.root,
+            className,
+            {
+                [style.strong]: strong,
+                [style.italic]: italic,
+                [style.disabled]: disabled,
+                [style.centered]: centered,
+            },
+        )
+    }, children);
 };
 
 Text.propTypes = {
@@ -33,6 +36,7 @@ Text.propTypes = {
     strong: PropTypes.bool,
     italic: PropTypes.bool,
     centered: PropTypes.bool,
+    id: PropTypes.string,
 }
 
 export default Text;
